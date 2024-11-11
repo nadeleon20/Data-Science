@@ -1,30 +1,40 @@
 #install.packages("httr")
 #install.packages("jsonlite")
 #install.packages("data.table")
+#install.packages("dplyr")
+#install.packages("lubridate")
 
-#library(httr)
-#library(jsonlite)
-#library(data.table)
 
-Sys.setenv(KAGGLE_USERNAME = "~")
-Sys.setenv(KAGGLE_KEY = "~")
+#Sys.setenv(KAGGLE_USERNAME = "~")
+#Sys.setenv(KAGGLE_KEY = "~")
 
 #Specifying the dataset
-data_name <- "computingvictor/transactions-fraud-datasets"
+#data_name <- "computingvictor/transactions-fraud-datasets"
 
 #Using the dataset name to create the download URL
-URL <- paste0("https://www.kaggle.com/api/v1/datasets/download/", data_name, "?")
+#URL <- paste0("https://www.kaggle.com/api/v1/datasets/download/", data_name, "?")
 
 #Use the GET command to download the file
-file <- GET(URL, authenticate(Sys.getenv("~"), Sys.getenv("~")))
+#file <- GET(URL, authenticate(Sys.getenv("~"), Sys.getenv("~")))
 
 #Saving the downloaded file as a zip
-zip_file <- "transactions-fraud-datasets.zip"
-writeBin(content(file, "raw"), zip_file)
+#zip_file <- "transactions-fraud-datasets.zip"
+#writeBin(content(file, "raw"), zip_file)
 
 #Unzip the file
-unzip(zip_file, exdir = "datasets")
+#unzip(zip_file, exdir = "datasets")
 
 data <- fread("datasets/transactions_data.csv")
-# rm(data)
+# rm(transactions)
+
+transactions <- data %>%
+  mutate(date = lubridate::year(date),
+    amount = as.numeric(gsub("[\\$,]", "", amount)))
+
+Average_Spend <- transactions %>%
+  group_by(date) %>%
+  summarize(AverageSpedn = mean(amount))
+
+
+
 
