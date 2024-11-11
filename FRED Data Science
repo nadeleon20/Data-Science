@@ -1,0 +1,17 @@
+# Downloading needed packages in the terminal
+# pip install fredapi pandas
+
+import fredapi
+import pandas as pd
+
+# Establish API key for FRED data
+fred = fredapi.Fred(api_key='FRED_API')
+
+# Grab FRED data
+gdp_series = fred.get_series('')
+
+# Convert to DataFrame
+gdp_df = pd.DataFrame(gdp_series)
+
+# Save to a CSV file
+gdp_df.to_csv('gdp_data.csv', index=True)
