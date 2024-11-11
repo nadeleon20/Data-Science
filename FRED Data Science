@@ -8,10 +8,10 @@ import pandas as pd
 fred = fredapi.fred(api_key='FRED_API')
 
 # Grab FRED data
-gdp_series = fred.get_series('IRLTLT01USM156N')
+Interest_Rates = fred.get_series('IRLTLT01USM156N')
 
 # Convert to DataFrame
-gdp_df = pd.DataFrame(gdp_series)
+ir_df = pd.DataFrame(Interest_Rates)
 
 # Save to a CSV file
-gdp_df.to_csv('gdp_data.csv', index=True)
+ir_df.to_csv('ir_data.csv', index=True)
