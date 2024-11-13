@@ -1,17 +1,5 @@
-# Downloading needed packages in the terminal
-# pip install fredapi pandas
+# Installing necessary packages
 
-import fredapi
-import pandas as pd
-
-# Establish API key for FRED data
-fred = fredapi.fred(api_key='FRED_API')
-
-# Grab FRED data
-Interest_Rates = fred.get_series('IRLTLT01USM156N')
-
-# Convert to DataFrame
-ir_df = pd.DataFrame(Interest_Rates)
-
-# Save to a CSV file
-ir_df.to_csv('ir_data.csv', index=True)
+import pandas
+import numpy
+import matplotlib
