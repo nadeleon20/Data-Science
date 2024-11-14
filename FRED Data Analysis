@@ -9,7 +9,15 @@ library("car")
 
 # Loading all data into the script 
 
+Unemployment = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Unemployment.csv")
+CC_Delinq = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/CC_Delinquency.csv")
+Effective_Rate = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Effective_Rate.csv")
+Savings = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Saving.csv")
+SP_500 = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/SP500.csv")
+
 # Create Correlation Matrix, using Pearson's R or Wilcox
+
+
 
 
 
