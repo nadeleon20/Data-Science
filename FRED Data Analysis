@@ -27,7 +27,7 @@ Variables <- data.frame(
   ,SP_500 = SP_500(100)
 )
 
-
+Correlation_Matrix <- cor(Variables)
 
 
 
