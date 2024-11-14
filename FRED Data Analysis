@@ -5,6 +5,8 @@ library("data.table")
 library("dplyr")
 library("lubridate")
 library("car")
+library("nortest")
+library("corrplot")
 
 
 # Loading all data into the script 
@@ -16,6 +18,14 @@ Savings = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Deskto
 SP_500 = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/SP500.csv")
 
 # Create Correlation Matrix, using Pearson's R or Wilcox
+
+Variables <- data.frame(
+  Unemployment = Unemployment(100)
+  ,CC_Delinq = CC_Delinq(100)
+  ,Effective_Rate = Effective_Rate(100)
+  ,Savings = Savings(100)
+  ,SP_500 = SP_500(100)
+)
 
 
 
