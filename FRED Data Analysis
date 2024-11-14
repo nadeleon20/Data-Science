@@ -1,8 +1,9 @@
-#install.packages("httr")
-#install.packages("jsonlite")
-#install.packages("data.table")
-#install.packages("dplyr")
-#install.packages("lubridate")
+library("httr")
+library("jsonlite")
+library("data.table")
+library("dplyr")
+library("lubridate")
+library("car")
 
 
 #Sys.setenv(KAGGLE_USERNAME = "~")
