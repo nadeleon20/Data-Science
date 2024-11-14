@@ -1,3 +1,4 @@
+#Checking for necessary packages
 library("httr")
 library("jsonlite")
 library("data.table")
@@ -6,36 +7,9 @@ library("lubridate")
 library("car")
 
 
-#Sys.setenv(KAGGLE_USERNAME = "~")
-#Sys.setenv(KAGGLE_KEY = "~")
+# Loading all data into the script 
 
-#Specifying the dataset
-#data_name <- "computingvictor/transactions-fraud-datasets"
-
-#Using the dataset name to create the download URL
-#URL <- paste0("https://www.kaggle.com/api/v1/datasets/download/", data_name, "?")
-
-#Use the GET command to download the file
-#file <- GET(URL, authenticate(Sys.getenv("~"), Sys.getenv("~")))
-
-#Saving the downloaded file as a zip
-#zip_file <- "transactions-fraud-datasets.zip"
-#writeBin(content(file, "raw"), zip_file)
-
-#Unzip the file
-#unzip(zip_file, exdir = "datasets")
-
-data <- fread("datasets/transactions_data.csv")
-# rm(transactions)
-
-transactions <- data %>%
-  mutate(date = lubridate::year(date),
-    amount = as.numeric(gsub("[\\$,]", "", amount)))
-
-Average_Spend <- transactions %>%
-  group_by(date) %>%
-  summarize(AverageSpedn = mean(amount))
-
+# Create Correlation Matrix, using Pearson's R or Wilcox
 
 
 
