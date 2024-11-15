@@ -20,11 +20,11 @@ SP_500 = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop
 # Create Correlation Matrix, using Pearson's R or Wilcox
 
 Variables <- data.frame(
-  Unemployment = Unemployment(100)
-  ,CC_Delinq = CC_Delinq(100)
-  ,Effective_Rate = Effective_Rate(100)
-  ,Savings = Savings(100)
-  ,SP_500 = SP_500(100)
+  Unemployment = Unemployment(120)
+  ,CC_Delinq = CC_Delinq(120)
+  ,Effective_Rate = Effective_Rate(120)
+  #,Savings = Savings(120)
+  #,SP_500 = SP_500(120)
 )
 
 Correlation_Matrix <- cor(Variables)
