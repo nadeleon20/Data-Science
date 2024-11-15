@@ -27,7 +27,7 @@ Variables <- data.frame(
   #,SP_500 = SP_500(120)
 )
 
-Correlation_Matrix <- cor(Variables)
-
+Correlation_Matrix <- cor(x = Variables, y = NULL, use= "everything", method = c("pearson")
+print(Correlation_Matrix)
 
 
