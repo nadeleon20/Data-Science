@@ -28,11 +28,11 @@ Merged_Data <- Unemployment %>%
   inner_join(Effective_Rate, by = "Date")
 
 # Putting all the joined data into one table
-
 Raw_Variables <- Merged_Data %>%
   select(Unemployment, CC_Rate, Effect_Rate)
 
 # Mutating the data to be numeric for the sake of the correlation matrix
+# All raw data is a percentage so mutating to numeric should maintain correlational relationships
 Variables <- Raw_Variables %>%
   mutate(
     Unemployment = as.numeric(Unemployment),
