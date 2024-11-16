@@ -16,18 +16,33 @@ CC_Delinq = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desk
 Effective_Rate = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Effective_Rate.csv")
 Savings = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Saving.csv")
 SP_500 = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/SP500.csv")
+Real_GDP = read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/Real_GDP.csv")
 
-# Create Correlation Matrix, using Pearson's R or Wilcox
+#Check column names within the data for the join to work
+head(Unemployment)
+head(CC_Delinq)
+head(Effective_Rate)
 
-Variables <- data.frame(
-  Unemployment = Unemployment(120)
-  ,CC_Delinq = CC_Delinq(120)
-  ,Effective_Rate = Effective_Rate(120)
-  #,Savings = Savings(120)
-  #,SP_500 = SP_500(120)
-)
+# Join the data together based on their dates
+Merged_Data <- Unemployment %>%
+  inner_join(CC_Delinq, by = "Date") %>%
+  inner_join(Effective_Rate, by = "Date")
 
-Correlation_Matrix <- cor(x = Variables, y = NULL, use= "everything", method = c("pearson")
+
+
+# Create correlation matrix
+
+Variables <- Merged_Data %>%
+  select(Unemployment_value, CC_Delinq_value, Effective_Rate_value)
+
+Correlation_Matrix <- cor(Variables)
 print(Correlation_Matrix)
+
+rlang::last_trace()
+
+
+
+
+
 
 
