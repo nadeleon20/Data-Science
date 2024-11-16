@@ -23,22 +23,27 @@ head(Unemployment)
 head(CC_Delinq)
 head(Effective_Rate)
 
+#Kept seeing an error with the inner_join so renaming the columns to make sure they match
+Unemployment <- Unemployment %>% rename(Date = DATE, Unemployment = UNRATE)
+CC_Delinq <- CC_Delinq %>% rename (Date = DATE, CC_Rate = DRCCLACBS)
+Effective_Rate <- Effective_Rate %>% rename (Date = DATE, Effect_Rate = DFF)
+
 # Join the data together based on their dates
 Merged_Data <- Unemployment %>%
   inner_join(CC_Delinq, by = "Date") %>%
   inner_join(Effective_Rate, by = "Date")
 
-
-
 # Create correlation matrix
 
 Variables <- Merged_Data %>%
-  select(Unemployment_value, CC_Delinq_value, Effective_Rate_value)
+  select(Unemployment_Unemployment, CC_Delinq_CC_Rate, Effective_Rate_DFF)
 
 Correlation_Matrix <- cor(Variables)
 print(Correlation_Matrix)
 
-rlang::last_trace()
+
+
+
 
 
 
