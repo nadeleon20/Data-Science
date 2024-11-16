@@ -36,16 +36,10 @@ Merged_Data <- Unemployment %>%
 # Create correlation matrix
 
 Variables <- Merged_Data %>%
-  select(Unemployment_Unemployment, CC_Delinq_CC_Rate, Effective_Rate_DFF)
+  select(Date,Unemployment,CC_Rate, Effect_Rate)
 
 Correlation_Matrix <- cor(Variables)
 print(Correlation_Matrix)
-
-
-
-
-
-
 
 
 
