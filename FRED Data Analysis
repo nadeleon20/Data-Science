@@ -33,10 +33,19 @@ Merged_Data <- Unemployment %>%
   inner_join(CC_Delinq, by = "Date") %>%
   inner_join(Effective_Rate, by = "Date")
 
-# Create correlation matrix
+# Putting all the joined data into one table
 
-Variables <- Merged_Data %>%
-  select(Date,Unemployment,CC_Rate, Effect_Rate)
+Raw_Variables <- Merged_Data %>%
+  select(Unemployment, CC_Rate, Effect_Rate)
+
+# Mutating the data to be numeric for the sake of the correlation matrix
+Variables <- Raw_Variables %>%
+  mutate(
+    Unemployment = as.numeric(Unemployment),
+    CC_Rate = as.numeric(CC_Rate),
+    Effect_Rate = as.numeric(Effect_Rate)
+  )
+
 
 Correlation_Matrix <- cor(Variables)
 print(Correlation_Matrix)
