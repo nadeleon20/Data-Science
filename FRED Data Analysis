@@ -1,11 +1,5 @@
 #Checking for necessary packages
-library("httr")
-library("jsonlite")
-library("data.table")
 library("dplyr")
-library("lubridate")
-library("car")
-library("nortest")
 library("corrplot")
 
 
