@@ -83,3 +83,38 @@ print(Correlation_Matrix2)
 #As the Bonds Market and SP500 increase in value, so does the Urban Consumer Price Index.
 #Interestingly, these variables show a strong positive correlation (0.81 & 0.93) with Virginia Home Price as well.
 
+
+# The next correlation I am looking for is between the education rate and homeownership rate in Virginia vs. DC
+VA_Homes <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Home_Owner.csv")
+VA_Education <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Education.csv")
+DC_Homes <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/DC_Home_Owner.csv")
+DC_Education <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/DC_Education.csv")
+
+
+Merged_Data3 <- VA_Homes %>%
+  inner_join(VA_Education, by = "DATE") %>%
+  inner_join(DC_Homes, by = "DATE") %>%
+  inner_join(DC_Education, by = "DATE")
+
+
+Merged_Data3 <- Merged_Data3 %>% rename (VA_Home = VAHOWN, DC_Home = DCHOWN, VA_Educate = GCT1502VA, DC_Educate = GCT1502DC)
+
+
+Raw_Variables3 <- Merged_Data3 %>%
+  select(VA_Home, DC_Home, VA_Educate, DC_Educate)
+
+
+
+Variables3 <- Raw_Variables3 %>%
+  mutate(
+    VA_Home = as.numeric(VA_Home),
+    DC_Home = as.numeric(DC_Home),
+    VA_Educate = as.numeric(VA_Educate),
+    DC_Educate = as.numeric(DC_Educate)
+  )
+
+
+Correlation_Matrix3 <- cor(Variables3)
+print(Correlation_Matrix3)
+
+
