@@ -1,0 +1,12 @@
+# Checking for necessary packages
+library("dplyr")
+library("corrplot")
+
+
+#Pulling in data from downloaded csv's
+#Percentage of Virginia Residents who own homes
+VA_Homes <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Home_Owner.csv")
+#Percentage of working-age Virginia Residents who are employed
+VA_Labor <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Labor_Force.csv")
+#Percentage of Virginia Residents with Bachelor's Degree or higher
+VA_Education <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Education.csv")
