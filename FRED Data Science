@@ -4,4 +4,4 @@ import pandas
 import numpy
 import matplotlib
 
-Unemployment_fp = 'C:/Users/lilni/OneDrive - Mount St. Mary/''s University/Desktop/FRED Data Science/Unemployment.csv'
+# Plan is to utilize PyTorch to create a model capable of predicting a variable once I am done with my exploratory data analysis.
