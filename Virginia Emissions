@@ -51,3 +51,13 @@ t_variables <- Variables %>%
 t_test_result <- t.test(t_variables$VA_Emissions, t_variables$VA_Spending)
 print(t_test_result)
 
+#Results of the T-Test reveal a p-value < 0.05. This means that the differences between the variables are significant.
+#These results can be explained a few ways. First, recent technological advancements have made technology more energy efficient.
+#As the tech evolves, more consumers are spending money on these products while we see emissions lower simultaneously.
+#Second, there may have been a decline in jobs in the manufacturing field and other field related to emissions. At the same time,
+#there has been a consistent increase in service-based jobs, leading to an increase in spending on services. Lastly, environmental friendly
+#products have consistently been pushed over the past few years, possibly leading to a change in consumer preference, spending more money on
+#products that are more environmentally friendly.
+
+#Limitations to this exploratory analysis would include the small sample size 
+
