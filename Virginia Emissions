@@ -1,0 +1,53 @@
+# Checking for necessary packages
+library("dplyr")
+library("corrplot")
+
+
+#Pulling in data from downloaded csv's
+#Data was obtained from Federal Reserve Economic Data as well as Census.gov data
+
+
+VA_Emissions <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Emissions_A.csv")
+
+VA_Discouraged <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Discouraged_A.csv")
+
+VA_Spending <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Spending_A.csv")
+
+VA_HH_Income <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_HH_Income_A.csv")
+
+
+#Merge the data into one table
+Merge_Data <- VA_Emissions %>%
+  inner_join(VA_Discouraged, by = "DATE") %>%
+  inner_join(VA_Spending, by = "DATE") %>%
+  inner_join(VA_HH_Income, by = "DATE")
+
+#Change column names for better legibility
+Raw_Variables <- Merge_Data %>% rename(VA_Emissions = EMISSCO2TOTVTTTOVAA, VA_Discouraged = DISCWORKVA, VA_Spending = VAPCE, VA_HH_Income = MEHOINUSVAA672N)
+
+#Create table for variables without the DATE column and change to numeric 
+Variables <- Raw_Variables %>%
+  select(VA_Emissions, VA_Discouraged, VA_Spending, VA_HH_Income)
+
+Variables <- Variables %>%
+  mutate(
+    VA_Emissions = as.numeric(VA_Emissions),
+    VA_Discouraged = as.numeric(VA_Discouraged),
+    VA_Spending = as.numeric(VA_Spending),
+    VA_HH_Income = as.numeric(VA_HH_Income)
+  )
+
+#Create and print the correlation matrix
+Correlation_Matrix <- cor(Variables)
+print(Correlation_Matrix)
+
+#Noticing the -0.76 Correlation Coefficient between Personal Spending and Emissions in Virginia, I wanted to dive deeper
+
+#Selecting only the interested variables in a separate table, while maintaining alignment on the date
+t_variables <- Variables %>%
+  select(VA_Emissions, VA_Spending)
+
+#Running and printing results of an Independent T-Test
+t_test_result <- t.test(t_variables$VA_Emissions, t_variables$VA_Spending)
+print(t_test_result)
+
