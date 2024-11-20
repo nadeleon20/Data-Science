@@ -14,11 +14,11 @@ VA_Labor <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desk
 #Annual Percentage of 18+ Virginia Residents with Bachelor's Degree or higher
 VA_Education <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Education.csv")
 # Annual Unemployment Percentage in Virginia
-VA_Unemployment <- read.csv("")
+VA_Unemployment <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Unemployment.csv")
 # Annual Unemployment Percentage in DC
-DC_Unemployment <- read.csv("")
+DC_Unemployment <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/DC_Unemployment.csv")
 # Annual Percentage of DC Employed and Unemployed workers divided against state's Civilian Population
-DC_Labor <- read.csv("")
+DC_Labor <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/DC_Labor_Force.csv")
 
 #Merge the data into one table
 Merge_Data <- VA_Homes %>%
