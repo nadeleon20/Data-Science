@@ -59,5 +59,7 @@ print(t_test_result)
 #products have consistently been pushed over the past few years, possibly leading to a change in consumer preference, spending more money on
 #products that are more environmentally friendly.
 
+######################################################Import Manufacturing Jobs Data & Service Jobs Data as a line graph
+
 #Limitations to this exploratory analysis would include the small sample size (df=17) as well as outside factors that could obviously be affecting either of these variables.
 
