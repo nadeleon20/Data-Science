@@ -68,8 +68,8 @@ ggplot(Data_for_graph) +
        y = "Values") +
   scale_color_manual(name = "Variables", values = c("Emissions" = "red", "Spending" = "green"))
 
-
-
+#Since the line graph was not particularly obvious about the correlation between these variables,
+#I decided to run an Independent Samples T-test in order to test the significance of these differences.
 
 
 #Selecting only the interested variables in a separate table, while maintaining alignment on the date
