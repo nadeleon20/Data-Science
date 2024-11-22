@@ -43,6 +43,15 @@ print(Correlation_Matrix)
 
 #Noticing the -0.76 Correlation Coefficient between Personal Spending and Emissions in Virginia, I wanted to dive deeper
 
+#Check for Necessary package
+library(ggplot2)
+Data_for_graph <- data.frame(
+  time = Raw_Variables$DATE,
+  a = Raw_Variables$VA_Emissions,
+  b = Raw_Variables$VA_Spending
+)
+
+
 #Selecting only the interested variables in a separate table, while maintaining alignment on the date
 t_variables <- Variables %>%
   select(VA_Emissions, VA_Spending)
