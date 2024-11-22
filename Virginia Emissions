@@ -45,11 +45,27 @@ print(Correlation_Matrix)
 
 #Check for Necessary package
 library(ggplot2)
+
+#Create data frame with the necessary variables
 Data_for_graph <- data.frame(
   time = Raw_Variables$DATE,
   a = Raw_Variables$VA_Emissions,
   b = Raw_Variables$VA_Spending
 )
+
+#Use data frame to create the graph
+ggplot(Data_for_graph) +
+  geom_line(aes(x = time, y = a, color = "Emissions")) +
+  geom_line(aes(x = time, y = b, color = "Spending")) +
+  scale_y_continuous(
+    name = "Emissions",
+    sec.axis = sec_axis(~ . * 10, name = "Spending")
+  ) +
+  labs(title = "Emissions vs. Spending in Virginia",
+       x = "Time",
+       y = "Values") +
+  scale_color_manual(name = "Variables", values = c("Emissions" = "red", "Spending" = "green"))
+
 
 
 #Selecting only the interested variables in a separate table, while maintaining alignment on the date
