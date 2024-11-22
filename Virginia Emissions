@@ -56,15 +56,19 @@ Data_for_graph <- data.frame(
 #Use data frame to create the graph
 ggplot(Data_for_graph) +
   geom_line(aes(x = time, y = a, color = "Emissions")) +
-  geom_line(aes(x = time, y = b, color = "Spending")) +
+  geom_line(aes(x = time, y = (b - 150000) / 3500 + 50, color = "Spending")) +
   scale_y_continuous(
     name = "Emissions",
-    sec.axis = sec_axis(~ . * 10, name = "Spending")
+    limits = c(50, 120),
+    sec.axis = sec_axis(~ (. - 50) * 3500 + 150000, 
+    name = "Spending")
   ) +
   labs(title = "Emissions vs. Spending in Virginia",
        x = "Time",
        y = "Values") +
   scale_color_manual(name = "Variables", values = c("Emissions" = "red", "Spending" = "green"))
+
+
 
 
 
