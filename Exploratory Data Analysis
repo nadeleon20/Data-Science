@@ -1,5 +1,5 @@
-#The goal of this script was to explore economic data contained in FRED
-
+#The goal of this script was to explore correlations contained in the Federal Reserve Economic Data (FRED).
+#This was good practice for creating correlation matrices before creating graphs and running T-tests.
 
 #Checking for necessary packages
 library("dplyr")
