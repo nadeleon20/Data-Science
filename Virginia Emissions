@@ -4,7 +4,7 @@ library("corrplot")
 
 
 #Pulling in data from downloaded csv's
-#Data was obtained from Federal Reserve Economic Data as well as Census.gov data
+#Data was obtained from Federal Reserve Economic Data (FRED)
 
 
 VA_Emissions <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Emissions_A.csv")
@@ -45,10 +45,11 @@ print(Correlation_Matrix)
 
 #Check for Necessary package
 library(ggplot2)
+library(lubridate)
 
 #Create data frame with the necessary variables
 Data_for_graph <- data.frame(
-  time = Raw_Variables$DATE,
+  time = year(Raw_Variables$DATE),
   a = Raw_Variables$VA_Emissions,
   b = Raw_Variables$VA_Spending
 )
@@ -68,16 +69,16 @@ ggplot(Data_for_graph) +
        y = "Values") +
   scale_color_manual(name = "Variables", values = c("Emissions" = "red", "Spending" = "green"))
 
-#Since the line graph was not particularly obvious about the correlation between these variables,
-#I decided to run an Independent Samples T-test in order to test the significance of these differences.
 
+#I also wanted to look at the differences between DC Spending and Virginia Spending
+#so I conducted an Independent Samples T-test to check the significance between the means
 
 #Selecting only the interested variables in a separate table, while maintaining alignment on the date
 t_variables <- Variables %>%
-  select(VA_Emissions, VA_Spending)
+  select(VA_Spending, DC_Spending)
 
 #Running and printing results of an Independent T-Test
-t_test_result <- t.test(t_variables$VA_Emissions, t_variables$VA_Spending)
+t_test_result <- t.test(t_variables$VA_Spending, t_variables$DC_Spending)
 print(t_test_result)
 
 #Results of the T-Test reveal a p-value < 0.05. This means that the differences between the variables are significant.
@@ -91,4 +92,3 @@ print(t_test_result)
 ######################################################Import Manufacturing Jobs Data & Service Jobs Data as a line graph
 
 #Limitations to this exploratory analysis would include the small sample size (df=17) as well as outside factors that could obviously be affecting either of these variables.
-
