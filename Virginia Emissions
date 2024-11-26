@@ -115,9 +115,15 @@ ggplot(Graph_Data2) +
 t_variables <- Raw_Variables %>%
   select(VA_Spending, DC_Spending)
 
+t_variables$DC_Spending <- as.factor(Raw_Variables$DC_Spending)
+
+t.test(VA_Spending ~ DC_Spending, data = t_variables, var.equal = TRUE)
+
+
+
 #Running and printing results of an Independent T-Test
-t_test_result <- t.test(t_variables$VA_Spending, t_variables$DC_Spending)
-print(t_test_result)
+#t_test_result <- t.test(t_variables$VA_Spending, t_variables$DC_Spending)
+#print(t_test_result)
 
 #Results of the T-Test reveal a p-value < 0.05. This means that the differences between the variables are significant.
 
