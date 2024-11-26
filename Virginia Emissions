@@ -72,6 +72,27 @@ ggplot(Data_for_graph) +
        y = "Values") +
   scale_color_manual(name = "Variables", values = c("Emissions" = "red", "Spending" = "green"))
 
+#These results can be explained a few ways. First, recent technological advancements have made technology more energy efficient.
+#As the tech evolves, more consumers are spending money on these products while we see emissions lower simultaneously.
+#Second, there may have been a decline in jobs in the manufacturing field and other field related to emissions. At the same time,
+#there has been a consistent increase in service-based jobs, leading to an increase in spending on services. Lastly, environmental friendly
+#products have consistently been pushed over the past few years, possibly leading to a change in consumer preference, spending more money on
+#products that are more environmentally friendly.
+
+#Limitations to this exploratory analysis would include the small sample size (df=17) as well as outside factors that could obviously be affecting either of these variables.
+
+VA_Manu_Jobs <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Manufacturing_M.csv")
+VA_Service <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Business_Service_M.csv")
+
+Data_for_graph2 <- VA_Manu_Jobs %>%
+  inner_join(VA_Service, by = "DATE")
+
+Data_for_graph2 <- Data_for_graph2 %>% rename()
+
+Graph_Data2 <- Data_for_graph2 %>%
+  select(VAMFG = VA_Manufacturing, VAPBSV = VA_Business)
+
+
 
 #I also wanted to look at the differences between DC Spending and Virginia Spending
 #so I conducted an Independent Samples T-test to check the significance between the means
@@ -85,13 +106,6 @@ t_test_result <- t.test(t_variables$VA_Spending, t_variables$DC_Spending)
 print(t_test_result)
 
 #Results of the T-Test reveal a p-value < 0.05. This means that the differences between the variables are significant.
-#These results can be explained a few ways. First, recent technological advancements have made technology more energy efficient.
-#As the tech evolves, more consumers are spending money on these products while we see emissions lower simultaneously.
-#Second, there may have been a decline in jobs in the manufacturing field and other field related to emissions. At the same time,
-#there has been a consistent increase in service-based jobs, leading to an increase in spending on services. Lastly, environmental friendly
-#products have consistently been pushed over the past few years, possibly leading to a change in consumer preference, spending more money on
-#products that are more environmentally friendly.
 
-######################################################Import Manufacturing Jobs Data & Service Jobs Data as a line graph
 
-#Limitations to this exploratory analysis would include the small sample size (df=17) as well as outside factors that could obviously be affecting either of these variables.
+
