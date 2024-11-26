@@ -87,13 +87,20 @@ VA_Service <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/De
 Data_for_graph2 <- VA_Manu_Jobs %>%
   inner_join(VA_Service, by = "DATE")
 
-Data_for_graph2 <- Data_for_graph2 %>% rename()
+Data_for_graph2 <- Data_for_graph2 %>% rename(VA_Manufacturing = VAMFG, VA_Business = VAPBSV)
 
 Graph_Data2 <- Data_for_graph2 %>%
-  select(VAMFG = VA_Manufacturing, VAPBSV = VA_Business)
+  select(DATE, VA_Manufacturing, VA_Business)
 
-
-
+ggplot(Graph_Data2) +
+  geom_line(aes(x = DATE, y = VA_Manufacturing, color = "Manufacturing")) +
+  geom_line(aes(x = DATE, y = VA_Business, color = "Business Services")) +
+  labs(title = "Manufacturing vs. Business Services Jobs in VA",
+       x = "Time",
+       y = "Values")
+  scale_color_manual(name = "Variables", values = c("Manufacturing" = "red", "Business Services" = "blue"))
+  
+  
 #I also wanted to look at the differences between DC Spending and Virginia Spending
 #so I conducted an Independent Samples T-test to check the significance between the means
 
