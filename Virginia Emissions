@@ -88,6 +88,10 @@ Data_for_graph2 <- VA_Manu_Jobs %>%
   inner_join(VA_Service, by = "DATE")
 
 Data_for_graph2 <- Data_for_graph2 %>% rename(VA_Manufacturing = VAMFG, VA_Business = VAPBSV)
+Data_for_graph2$DATE <- as.Date(Data_for_graph2$DATE)
+Data_for_graph2$VA_Manufacturing <- as.numeric(Data_for_graph2$VA_Manufacturing)
+Data_for_graph2$VA_Business <- as.numeric(Data_for_graph2$VA_Business)
+
 
 Graph_Data2 <- Data_for_graph2 %>%
   select(DATE, VA_Manufacturing, VA_Business)
@@ -99,6 +103,9 @@ ggplot(Graph_Data2) +
        x = "Time",
        y = "Values")
   scale_color_manual(name = "Variables", values = c("Manufacturing" = "red", "Business Services" = "blue"))
+  
+#With this graph, you can see that over the same time period, we have seen a consistent decrease in Manufacturing Jobs
+# as well as a consistent increase in Business Services jobs in Virginia
   
   
 #I also wanted to look at the differences between DC Spending and Virginia Spending
