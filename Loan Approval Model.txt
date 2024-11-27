@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
+
+
+Loan_Approval_Data = pd.read_csv("Data/Loan_Approval.csv")
+
+# Removing categorical variables
+Loan_Approval_Data = Loan_Approval_Data[['person_age', 'person_income', 'person_emp_exp', 'loan_amnt', 'loan_int_rate', 'loan_percent_income', 'cb_person_cred_hist_length', 'credit_score', 'loan_status']]
+
+
+X = Loan_Approval_Data.drop('loan_status', axis = 1)
+Y = Loan_Approval_Data['loan_status'].map({'Yes': 1, 'No': 0})
+Y = Y.dropna
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 9)
+
+Model = LinearRegression()
+Model.fit(X_train, Y_train)
+
+Y_pred = Model.predict(X_test)
+print(Y_pred)
+
+Accuracy = accuracy_score(Y_test, Y_pred)
+Precision = precision_score(Y_test, Y_pred)
+Recall = recall_score(Y_test, Y_pred)
+CM = confusion_matrix(Y_test, Y_pred)
+
+print(f'Accuracy: {Accuracy}')
+print(f'Precision: {Precision}')
+print(f'Recall: {Recall}')
+print(f'Confusion Matrix: \n{CM}')
