@@ -106,26 +106,8 @@ ggplot(Graph_Data2) +
   
 #With this graph, you can see that over the same time period, we have seen a consistent decrease in Manufacturing Jobs
 # as well as a consistent increase in Business Services jobs in Virginia
+
   
-  
-#I also wanted to look at the differences between DC Spending and Virginia Spending
-#so I conducted an Independent Samples T-test to check the significance between the means
-
-#Selecting only the interested variables in a separate table, while maintaining alignment on the date
-t_variables <- Raw_Variables %>%
-  select(VA_Spending, DC_Spending)
-
-t_variables$DC_Spending <- as.factor(Raw_Variables$DC_Spending)
-
-t.test(VA_Spending ~ DC_Spending, data = t_variables, var.equal = TRUE)
-
-
-
-#Running and printing results of an Independent T-Test
-#t_test_result <- t.test(t_variables$VA_Spending, t_variables$DC_Spending)
-#print(t_test_result)
-
-#Results of the T-Test reveal a p-value < 0.05. This means that the differences between the variables are significant.
 
 
 
