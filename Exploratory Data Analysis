@@ -45,6 +45,23 @@ print(Correlation_Matrix)
 
 # Seeing that the correlation between Credit Card Delinquency and Effective Federal Fund Rate is 0.77,
 # it is somewhat expected because of the relationship between the two factors. As the Federal Funds Rate
+
+# Now I wanted to run an Independent Samples T-test to see if there is a significant difference in Personal Spending between Virginia and DC
+
+VA_Spending <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/VA_Spending_A.csv")
+
+DC_Spending <- read.csv("C:/Users/lilni/OneDrive - Mount St. Mary's University/Desktop/FRED Data Science/DC_Spending_A.csv")
+
+t_test_data <- VA_Spending %>%
+  inner_join(DC_Spending, by = "DATE")
+
+t_test_data <- t_test_data %>% rename (VA_Spend = VAPCE, DC_Spend = DCPCE)
+
+t.test(t_test_data$VA_Spend, t_test_data$DC_Spend, var.equal = TRUE)
+
+#Since the results of the t-test show a p-value less than .05, we can say that the difference between the means is not due to chance.
+#The central limitation to these findings is that DC has far less inhabitants compared to Virginia,
+#so personal spending will obviously be much higher in Virginia since it is accounting for many more people.
 # increases, so does the Credit Card Interest Rate which makes it more difficult for low income families
 # to make their minimum monthly payment, therefore increasing the Credit Card Delinquency Rate
 
