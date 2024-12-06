@@ -1,0 +1,33 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Load the data from the CSV file
+Loan_Approval_Data = pd.read_csv("Data/Loan_Approval.csv")
+Loan_df = pd.DataFrame(Loan_Approval_Data)
+
+#print(Loan_df.head())
+
+# Extract the features for clustering
+X = Loan_df[['person_income', 'credit_score']]
+
+#print(X.head())
+
+# Apply the K-Means clustering function
+kmeans = KMeans(n_clusters = 4)
+kmeans.fit(X)
+Y_kmeans = kmeans.predict(X)
+
+# Plot the clusters
+plt.scatter(X['person_income'], X['credit_score'], c = Y_kmeans, s = 50, cmap = 'viridis')
+
+# Plot the cluster centers
+centers = kmeans.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], c = 'green', s = 200, alpha = 0.75, marker = 'X')
+plt.xlabel('Income')
+plt.ylabel('Credit Score')
+plt.title('Clustering Income and Credit Score')
+plt.show()
+
+# Find out why this is not giving and output (IDE issue?)
