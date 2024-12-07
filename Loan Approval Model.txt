@@ -42,7 +42,7 @@ from sklearn.metrics import roc_curve, auc
 
 Y_pred_prob = Model.predict_proba(X_test)[:, 1]
 
-#We use the roc_curve function to calculatre the False Positive Rate (FPR) and True Positive Rate (TPR)
+#We use the roc_curve function to calculate the False Positive Rate (FPR) and True Positive Rate (TPR)
 #The TPR is separate from the number of true positives because we have to account for false negatives as well to obtain the true rate.
 fpr, tpr, _ = roc_curve(Y_test, Y_pred_prob)
 
