@@ -7,4 +7,4 @@ After finding a strong correlation between Personal Spending in Virginia and Tot
 A passion of mine is finance which led me to begin another project within this repository. I have created a model using the scikit-learn package in Python that will take 8 different quantitative variables and predict whether these applications are approved for a loan.
 After creating this model, I created a confusion matrix and calculated the True Positive Rate and True Negative Rate of the model's predictions. Although my model is not as accurate as I would like (Accuracy = 82%), my ROC curve displays an AUC of .802 which is not terrible. Additionally, I created a cluster graph in an attempt to identify an ideal audience for a loan provider to advertise to. Unfortunately, the clusters that were created are not as helpful as I would have liked.
 
-My next project will be creating an object recognition model in TensorFlow that can identify the differences between cats, dogs, and foxes within images. 
+My next project will be creating an object recognition model in TensorFlow that can differentiate between cats, dogs, and foxes within images. 
