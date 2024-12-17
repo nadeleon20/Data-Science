@@ -1,0 +1,22 @@
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import kagglehub
+import requests
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
+
+
+# Download latest version
+path = kagglehub.dataset_download("itzusama/amazon-stock-market-data-2015-2024")
+
+print("Path to dataset files:", path)
+
+AMZNData = pd.read_csv("/home/codespace/.cache/kagglehub/datasets/itzusama/amazon-stock-market-data-2015-2024/versions/1")
+
+print(AMZNData)
+
+X = AMZNData.drop('', axis = 1)
+Y = AMZNData['']
